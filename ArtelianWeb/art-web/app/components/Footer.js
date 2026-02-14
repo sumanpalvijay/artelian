@@ -23,7 +23,7 @@ export default function Footer() {
       >
         {/* LEFT */}
         <div>
-          <Image src="/logo.png" alt="Logo" width={140} height={60} />
+          <Image src="/logo.jpg" alt="Logo" width={140} height={60} />
 
           <p style={{ marginTop: "18px", lineHeight: "1.8" }}>
             6-3-251/3, Ground Floor,<br />
@@ -32,89 +32,95 @@ export default function Footer() {
           </p>
 
           <div style={{ display: "flex", gap: "14px", marginTop: "18px" }}>
-            <span>📷</span>
-            <span>📘</span>
-            <span>▶️</span>
+            <span><Image src="/facebook.svg" alt="Facebook" width={24} height={24} /></span>
+            <span><Image src="/insta.svg" alt="Instagram" width={24} height={24} /></span>
+            <span><Image src="/youtube.svg" alt="YouTube" width={24} height={24} /></span>
           </div>
         </div>
 
         {/* CENTER */}
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "left" }}>
           <p style={{ opacity: 0.7 }}>Associated with</p>
+          <div className="pb-10 pt-7">
+            <Image src="/arcs.avif" alt="sss" width={120} height={60} />
+          </div>
+          <div className="pb-4 ">
 
-          <Image src="/arc.png" alt="ARC" width={120} height={60} />
-          <Image
-            src="/barcelona.png"
-            alt="Barcelona Academy of Art"
-            width={120}
-            height={60}
-          />
-
-          <button
-            style={{
-              marginTop: "20px",
-              padding: "10px 22px",
-              background: "#222",
-              border: "1px solid #333",
-              color: "#fff",
-              cursor: "pointer",
-            }}
-          >
-            SUPPORT US
-          </button>
+            <Image
+              src="/second.avif"
+              alt="Barcelona Academy of Art"
+              width={120}
+              height={60}
+            />
+          </div>
+          <div  >
+            <button className=" bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
+              style={{
+                marginTop: "20px",
+                padding: "10px 22px",
+                cursor: "pointer",
+              }}
+            >
+              SUPPORT US
+            </button>
+          </div>
         </div>
 
         {/* RIGHT */}
-        <div>
-          <h4>Join our mailing list</h4>
+        <div className="flex gap-10">
+          <div>
+            <h4>Join our mailing list</h4>
 
-          <input
-            type="email"
-            placeholder="Email *"
-            style={{
-              width: "100%",
-              background: "transparent",
-              border: "none",
-              borderBottom: "1px solid #666",
-              padding: "8px 0",
-              color: "#fff",
-            }}
-          />
+            <input
+              type="email"
+              placeholder="Email *"
+              style={{
+                width: "100%",
+                background: "transparent",
+                borderBottom: "1px solid #666",
+                padding: "8px 0",
+                color: "#fff",
+              }}
+            />
 
-          <label style={{ fontSize: "12px", marginTop: "12px", display: "block" }}>
-            <input type="checkbox" /> I want to subscribe to your mailing list *
-          </label>
+            <label style={{ fontSize: "12px", marginTop: "12px", display: "block" }}>
+              <input type="checkbox" /> I want to subscribe to your mailing list *
+            </label>
+          </div>
+          <div>
+            <button
+              className=" bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
 
-          <button
-            style={{
-              marginTop: "16px",
-              padding: "10px 26px",
-              border: "1px solid #fff",
-              background: "transparent",
-              color: "#fff",
-              cursor: "pointer",
-            }}
-          >
-            Subscribe
-          </button>
+              style={{
+                marginTop: "16px",
+                padding: "10px 26px",
+                border: "1px solid #fff",
+                background: "transparent",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              Subscribe
+            </button>
+          </div>
         </div>
       </div>
 
       {/* BOTTOM */}
       <div
         style={{
-          marginTop: "40px",
           borderTop: "1px solid #222",
           paddingTop: "18px",
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "left",
           fontSize: "13px",
           opacity: 0.7,
         }}
       >
-        <p>© 2019 Samsara Academy of Art. All Rights Reserved</p>
-
+        <hr></hr>
+        <div>
+          <p className="text-[12px] font-bold">©2026 Artelian Institute of Art. All Rights Reserved</p>
+        </div>
         {/* SCROLL TO TOP */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
