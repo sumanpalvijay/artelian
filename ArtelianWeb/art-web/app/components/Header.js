@@ -18,16 +18,45 @@ export default function Header() {
     <header className="w-full bg-[#111] text-white relative">
 
       {/* LOGO */}
-      <div className="flex justify-center py-6">
-        <Image
-          src="/Artelia-removebg.png"
-          alt="Artelia Logo"
-          width={180}
-          height={80}
-          priority
-        />
-      </div>
+{/* LOGO + HAMBURGER ROW */}
+<div className="flex items-center justify-between w-full px-4 py-3 relative">
 
+  {/* Logo */}
+  <Image
+    src="/Artelia-removebg.png"
+    alt="Artelia Logo"
+    width={140}
+    height={60}
+    priority
+    className="md:mx-auto"
+  />
+
+  {/* Hamburger (Mobile Only) */}
+  <button
+    onClick={() => setMobileOpen(!mobileOpen)}
+    className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+  >
+    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
+    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}></span>
+    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
+  </button>
+
+  {/* Desktop Login */}
+  <Link
+    href="/login"
+    className="hidden md:flex absolute right-10 items-center gap-3 text-[#c74848]"
+  >
+    <Image
+      src="/login.png"
+      alt="Login"
+      width={30}
+      height={30}
+      className="invert"
+    />
+    Log In
+  </Link>
+
+</div>
       {/* MAIN NAVIGATION */}
       <div className="flex items-center justify-center relative px-10 pb-10 ">
 
@@ -87,42 +116,50 @@ export default function Header() {
 
           {/* LOGIN */}
 
-          <Link href="/login" className="flex items-center gap-3 text-[#c74848] ml-auto">
-            <Image
-              src="/login.png"
-              alt="Login"
-              width={30}
-              height={30}
-
-              className="invert"
-            />
-            Log In
-          </Link>
 
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden absolute right-6 text-3xl"
-        >
-          {mobileOpen ? "✕" : "☰"}
-        </button>
+    {/* <button
+  onClick={() => setMobileOpen(!mobileOpen)}
+  className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+>
+  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
+  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}></span>
+  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
+</button> */}
       </div>
 
       {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-[#111] flex flex-col items-center gap-6 pb-6 text-sm tracking-widest">
-          <MobileLink href="/home" setMobileOpen={setMobileOpen}>HOME</MobileLink>
-          <MobileLink href="/about" setMobileOpen={setMobileOpen}>ABOUT</MobileLink>
-          <MobileLink href="/courses" setMobileOpen={setMobileOpen}>COURSES</MobileLink>
-          <MobileLink href="/admissions" setMobileOpen={setMobileOpen}>ADMISSIONS</MobileLink>
-          <MobileLink href="/gallery" setMobileOpen={setMobileOpen}>GALLERY</MobileLink>
-          <MobileLink href="/exhibitions" setMobileOpen={setMobileOpen}>EXHIBITIONS</MobileLink>
-          <MobileLink href="/community" setMobileOpen={setMobileOpen}>COMMUNITY</MobileLink>
-          <MobileLink href="/contact" setMobileOpen={setMobileOpen}>CONTACT</MobileLink>
-        </div>
-      )}
+<div className={`md:hidden bg-[#111] flex flex-col items-center gap-6 text-sm tracking-widest transition-all duration-300 overflow-hidden ${
+  mobileOpen ? "max-h-[500px] py-6" : "max-h-0"
+}`}>
+    {/* Login */}
+    <Link
+      href="/login"
+      onClick={() => setMobileOpen(false)}
+      className="flex items-center gap-2 text-[#c74848]"
+    >
+      <Image
+        src="/login.png"
+        alt="Login"
+        width={22}
+        height={22}
+        className="invert"
+      />
+      Log In
+    </Link>
+
+    <MobileLink href="/home" setMobileOpen={setMobileOpen}>HOME</MobileLink>
+    <MobileLink href="/about" setMobileOpen={setMobileOpen}>ABOUT</MobileLink>
+    <MobileLink href="/courses" setMobileOpen={setMobileOpen}>COURSES</MobileLink>
+    <MobileLink href="/admissions" setMobileOpen={setMobileOpen}>ADMISSIONS</MobileLink>
+    <MobileLink href="/gallery" setMobileOpen={setMobileOpen}>GALLERY</MobileLink>
+    <MobileLink href="/exhibitions" setMobileOpen={setMobileOpen}>EXHIBITIONS</MobileLink>
+    <MobileLink href="/community" setMobileOpen={setMobileOpen}>COMMUNITY</MobileLink>
+    <MobileLink href="/contact" setMobileOpen={setMobileOpen}>CONTACT</MobileLink>
+
+  </div>
 
     </header>
   );
