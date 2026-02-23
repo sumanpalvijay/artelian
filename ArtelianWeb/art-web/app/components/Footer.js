@@ -14,13 +14,8 @@ export default function Footer() {
       }}
     >
       {/* TOP SECTION */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1fr 1.2fr",
-          gap: "60px",
-        }}
-      >
+      <div className="footer-grid">
+
         {/* LEFT */}
         <div>
           <Image src="/logo.jpg" alt="Logo" width={140} height={60} />
@@ -32,20 +27,21 @@ export default function Footer() {
           </p>
 
           <div style={{ display: "flex", gap: "14px", marginTop: "18px" }}>
-            <span><Image src="/facebook.svg" alt="Facebook" width={24} height={24} /></span>
-            <span><Image src="/insta.svg" alt="Instagram" width={24} height={24} /></span>
-            <span><Image src="/youtube.svg" alt="YouTube" width={24} height={24} /></span>
+            <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
+            <Image src="/insta.svg" alt="Instagram" width={24} height={24} />
+            <Image src="/youtube.svg" alt="YouTube" width={24} height={24} />
           </div>
         </div>
 
         {/* CENTER */}
-        <div style={{ textAlign: "left" }}>
+        <div>
           <p style={{ opacity: 0.7 }}>Associated with</p>
+
           <div className="pb-10 pt-7">
             <Image src="/arcs.avif" alt="sss" width={120} height={60} />
           </div>
-          <div className="pb-4 ">
 
+          <div className="pb-4">
             <Image
               src="/second.avif"
               alt="Barcelona Academy of Art"
@@ -53,21 +49,21 @@ export default function Footer() {
               height={60}
             />
           </div>
-          <div  >
-            <button className=" bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
-              style={{
-                marginTop: "20px",
-                padding: "10px 22px",
-                cursor: "pointer",
-              }}
-            >
-              SUPPORT US
-            </button>
-          </div>
+
+          <button
+            className="bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
+            style={{
+              marginTop: "20px",
+              padding: "10px 22px",
+              cursor: "pointer",
+            }}
+          >
+            SUPPORT US
+          </button>
         </div>
 
         {/* RIGHT */}
-        <div className="flex gap-10">
+        <div className="flex gap-10 footer-right">
           <div>
             <h4>Join our mailing list</h4>
 
@@ -83,14 +79,20 @@ export default function Footer() {
               }}
             />
 
-            <label style={{ fontSize: "12px", marginTop: "12px", display: "block" }}>
+            <label
+              style={{
+                fontSize: "12px",
+                marginTop: "12px",
+                display: "block",
+              }}
+            >
               <input type="checkbox" /> I want to subscribe to your mailing list *
             </label>
           </div>
+
           <div>
             <button
-              className=" bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
-
+              className="bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
               style={{
                 marginTop: "16px",
                 padding: "10px 26px",
@@ -104,24 +106,15 @@ export default function Footer() {
             </button>
           </div>
         </div>
+
       </div>
 
       {/* BOTTOM */}
-      <div
-        style={{
-          borderTop: "1px solid #222",
-          paddingTop: "18px",
-          display: "flex",
-          alignItems: "left",
-          fontSize: "13px",
-          opacity: 0.7,
-        }}
-      >
-        <hr></hr>
-        <div>
-          <p className="text-[12px] font-bold">©2026 Artelian Institute of Art. All Rights Reserved</p>
-        </div>
-        {/* SCROLL TO TOP */}
+      <div className="footer-bottom">
+        <p className="text-[12px] font-bold">
+          ©2026 Artelian Institute of Art. All Rights Reserved
+        </p>
+
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{

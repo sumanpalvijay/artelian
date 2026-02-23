@@ -117,10 +117,46 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ================= DESKTOP (default) ================= */
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+    /* ❌ hide desktop menu */
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+    /* ✅ show ☰ */
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    z-index: 100;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    background: #111;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
