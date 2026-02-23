@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
+import { useRef } from "react";
+
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const [openAbout, setOpenAbout] = useState(false);
@@ -15,6 +18,7 @@ export default function Header() {
 
   return (
     <header style={{ background: "#111", padding: "1.5rem 3rem" }}>
+
       {/* LOGO */}
       <div style={{ display: "flex", justifyContent: "center", marginTop: "-2.5rem", marginBottom: "-0.5rem" }}>
         <Image
@@ -22,19 +26,43 @@ export default function Header() {
           alt="Artelia Logo"
           width={180}
           height={80}
+          style={{ maxWidth: "100%", height: "auto" }}
           priority
         />
       </div>
 
       {/* NAV BELOW LOGO */}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "3rem", position: "relative" }}>
-        <nav style={{ display: "flex", gap: "3rem" }}>
+      <div
+        style={{
+          display: "flex", justifyContent: "center", alignItems: "center",
+          gap: "clamp(1rem, 3vw, 3rem)",
+          flexWrap: "wrap", // 🔥 IMPORTANT
+          position: "relative",
+        }}
+      >
+        {/* MOBILE MENU BUTTON */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="mobile-menu-btn"
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            color: "#fff",
+            fontSize: "1.8rem",
+            cursor: "pointer",
+          }}
+        >
+          ☰
+        </button>
 
+        <nav className="desktop-nav" style={{ display: "flex", gap: "3rem" }}>
           <Link
             href="/home"
             style={{
-              color: pathname === "/home" ? "#c74848" : "#fff",
-              letterSpacing: "2px",
+              color: pathname === "/home" ? "#c74848" : "#fff", marginLeft: "10rem",
+              letterSpacing: "0.15em",
+              fontSize: "clamp(0.8rem, 2.5vw, 0.95rem)",
             }}
           >
             HOME
@@ -77,7 +105,8 @@ export default function Header() {
             href="/gallery"
             style={{
               color: pathname === "/gallery" ? "#c74848" : "#fff",
-              letterSpacing: "2px",
+              letterSpacing: "0.15em",
+              fontSize: "clamp(0.8rem, 2.5vw, 0.95rem)",
             }}
           >
             GALLERY
@@ -88,7 +117,8 @@ export default function Header() {
           href="/contact"
           style={{
             color: pathname === "/contact" ? "#c74848" : "#fff",
-            letterSpacing: "2px",
+            letterSpacing: "0.15em",
+            fontSize: "clamp(0.8rem, 2.5vw, 0.95rem)",
           }}
         >
           CONTACT
@@ -109,7 +139,8 @@ export default function Header() {
           href="/Community"
           style={{
             color: pathname === "/Community" ? "#c74848" : "#fff",
-            letterSpacing: "2px",
+            letterSpacing: "0.15em",
+            fontSize: "clamp(0.8rem, 2.5vw, 0.95rem)",
           }}
         >
           COMMUNITY
@@ -119,32 +150,72 @@ export default function Header() {
         <Link
           href="/login"
           style={{
-            position: "absolute", right: 0, top: 0, color: "#c74848", textDecoration: "none",
+            position: "relative", marginLeft: "auto", marginTop: "0.5rem", color: "#c74848", textDecoration: "none",
             display: "flex", alignItems: "center"
           }}
         >
           <Image
             src="/login.png"
+            icon color="white"
             alt="Login Icon"
             width={20}
             height={20}
-            style={{ marginRight: "5px" }}
+            style={{ marginRight: "5px", filter: "invert(100%) sepia(100%) grayscale(100%)" }}
           />
           Log In
         </Link>
+
+        {/* ================= MOBILE MENU ================= */}
+        {mobileMenuOpen && (
+          <div
+            className="mobile-nav"
+            style={{
+              width: "100%",
+              background: "#111",
+              padding: "1rem 0",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1rem",
+            }}
+          >
+            <Link href="/home" onClick={() => setMobileMenuOpen(false)}>HOME</Link>
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
+            <Link href="/courses" onClick={() => setMobileMenuOpen(false)}>COURSES</Link>
+            <Link href="/admissions" onClick={() => setMobileMenuOpen(false)}>ADMISSIONS</Link>
+            <Link href="/gallery" onClick={() => setMobileMenuOpen(false)}>GALLERY</Link>
+            <Link href="/exhibitions" onClick={() => setMobileMenuOpen(false)}>EXHIBITIONS</Link>
+            <Link href="/community" onClick={() => setMobileMenuOpen(false)}>COMMUNITY</Link>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
+          </div>
+        )}
+
       </div>
-    </header >
+    </header>
   );
 }
 
 /* ================= DROPDOWN COMPONENTS ================= */
 
 function Dropdown({ title, active, open, setOpen, children, width = "220px" }) {
+  const timeoutRef = useRef(null);
+
+  const openMenu = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+
+  const closeMenu = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpen(false);
+    }, 300); // short delay helps cursor travel
+  };
+
   return (
     <div
       style={{ position: "relative" }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openMenu}
+      onMouseLeave={closeMenu}
     >
       <span
         style={{
