@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,12 +17,15 @@ export default function Footer() {
 
         {/* LEFT */}
         <div>
-          <Image src="/logo.jpg" alt="Logo" width={140} height={60} />
+          <Image src="/logo.jpg" alt="Logo" width={160} height={70} />
 
           <p style={{ marginTop: "18px", lineHeight: "1.8" }}>
-            6-3-251/3, Ground Floor,<br />
-            Abacus Towers, Banjara Hills<br />
-            Road No 1, Hyderabad 500034
+            3/146,2nd Floor,Sector H,<br />
+            LDA colony, Power House<br />
+            Chauraha, Lucknow-226012<br />
+            Uttar Pradesh, India<br />
+            Phone: +91 9120020101<br />
+            Email: artliaartinstitude@gmail.com
           </p>
 
           <div style={{ display: "flex", gap: "14px", marginTop: "18px" }}>
@@ -34,28 +36,31 @@ export default function Footer() {
         </div>
 
         {/* CENTER */}
-        <div>
+        <div className="center-footer">
           <p style={{ opacity: 0.7 }}>Associated with</p>
 
-          <div className="pb-10 pt-7">
-            <Image src="/arcs.avif" alt="sss" width={120} height={60} />
+          <div style={{ marginTop: "20px" }}>
+            <Image src="/arcs.avif" alt="ARC" width={140} height={70} />
           </div>
 
-          <div className="pb-4">
+          <div style={{ marginTop: "10px" }}>
             <Image
               src="/second.avif"
               alt="Barcelona Academy of Art"
-              width={120}
-              height={60}
+              width={140}
+              height={70}
             />
           </div>
 
           <button
-            className="bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
             style={{
               marginTop: "20px",
               padding: "10px 22px",
               cursor: "pointer",
+              background: "#222",
+              border: "1px solid #444",
+              color: "#fff",
+              letterSpacing: "1px",
             }}
           >
             SUPPORT US
@@ -63,55 +68,59 @@ export default function Footer() {
         </div>
 
         {/* RIGHT */}
-        <div className="flex gap-10 footer-right">
-          <div>
-            <h4>Join our mailing list</h4>
+        <div>
+          <h4 style={{ marginBottom: "10px" }}>Join our mailing list</h4>
 
-            <input
-              type="email"
-              placeholder="Email *"
-              style={{
-                width: "100%",
-                background: "transparent",
-                borderBottom: "1px solid #666",
-                padding: "8px 0",
-                color: "#fff",
-              }}
-            />
+          <input
+            type="email"
+            placeholder="Email *"
+            style={{
+              width: "100%",
+              background: "transparent",
+              borderBottom: "1px solid #666",
+              padding: "8px 0",
+              color: "#fff",
+            }}
+          />
 
-            <label
-              style={{
-                fontSize: "12px",
-                marginTop: "12px",
-                display: "block",
-              }}
-            >
-              <input type="checkbox" /> I want to subscribe to your mailing list *
-            </label>
-          </div>
+          <button
+            style={{
+              marginTop: "16px",
+              padding: "10px 26px",
+              border: "1px solid #fff",
+              background: "transparent",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+          >
+            Subscribe
+          </button>
 
-          <div>
-            <button
-              className="bg-white text-black rounded-[5px] font-medium hover:bg-[#7a461e] hover:text-white"
-              style={{
-                marginTop: "16px",
-                padding: "10px 26px",
-                border: "1px solid #fff",
-                background: "transparent",
-                color: "#fff",
-                cursor: "pointer",
-              }}
-            >
-              Subscribe
-            </button>
-          </div>
+          <label
+            style={{
+              fontSize: "12px",
+              marginTop: "12px",
+              display: "block",
+            }}
+          >
+            <input type="checkbox" /> I want to subscribe to your mailing list *
+          </label>
         </div>
 
       </div>
 
       {/* BOTTOM */}
-      <div className="footer-bottom">
-        <p className="text-[12px] font-bold">
+      <div
+        style={{
+          marginTop: "20px",
+          borderTop: "1px solid #333",
+          paddingTop: "12px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <p style={{ margin: 0 }}>
           ©2026 Artelian Institute of Art. All Rights Reserved
         </p>
 

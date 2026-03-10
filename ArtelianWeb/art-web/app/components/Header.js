@@ -15,55 +15,54 @@ export default function Header() {
   const [openExhibition, setOpenExhibition] = useState(false);
 
   return (
-    <header className="w-full bg-[#111] text-white relative">
+    <header className="fixed top-0 left-0 w-full bg-[#111] text-white z-50">
 
-      {/* LOGO */}
-{/* LOGO + HAMBURGER ROW */}
-<div className="flex items-center justify-between w-full px-4 py-3 relative">
+      {/* LOGO + HAMBURGER */}
+      <div className="flex items-center justify-between w-full px-4 py-3 relative">
 
-  {/* Logo */}
-  <Image
-    src="/Artelia-removebg.png"
-    alt="Artelia Logo"
-    width={140}
-    height={60}
-    priority
-    className="md:mx-auto"
-  />
+        {/* Logo */}
+        <Image
+          src="/Artelia-removebg.png"
+          alt="Artelia Logo"
+          width={140}
+          height={60}
+          priority
+          className="md:mx-auto"
+        />
 
-  {/* Hamburger (Mobile Only) */}
-  <button
-    onClick={() => setMobileOpen(!mobileOpen)}
-    className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
-  >
-    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
-    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}></span>
-    <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
-  </button>
+        {/* Hamburger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+        >
+          <span className={`block h-0.5 w-6 bg-white transition ${mobileOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
+          <span className={`block h-0.5 w-6 bg-white transition ${mobileOpen ? "opacity-0" : ""}`}></span>
+          <span className={`block h-0.5 w-6 bg-white transition ${mobileOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
+        </button>
 
-  {/* Desktop Login */}
-  <Link
-    href="/login"
-    className="hidden md:flex absolute right-10 items-center gap-3 text-[#c74848]"
-  >
-    <Image
-      src="/login.png"
-      alt="Login"
-      width={30}
-      height={30}
-      className="invert"
-    />
-    Log In
-  </Link>
+        {/* Desktop Login */}
+        <Link
+          href="/login"
+          className="hidden md:flex absolute right-10 items-center gap-3 text-[#c74848]"
+        >
+          <Image
+            src="/login.png"
+            alt="Login"
+            width={30}
+            height={30}
+            className="invert"
+          />
+          Log In
+        </Link>
 
-</div>
-      {/* MAIN NAVIGATION */}
-      <div className="flex items-center justify-center relative px-10 pb-10 ">
+      </div>
 
-        {/* Desktop Navigation */}
+      {/* DESKTOP NAVIGATION */}
+      <div className="flex items-center justify-center relative px-10 pb-10">
+
         <nav className="hidden md:flex items-center gap-10 text-sm tracking-widest">
 
-          <NavLink href="/home" pathname={pathname}>HOME</NavLink>
+          <NavLink href="/" pathname={pathname}>HOME</NavLink>
 
           <Dropdown
             title="ABOUT"
@@ -114,52 +113,37 @@ export default function Header() {
 
           <NavLink href="/contact" pathname={pathname}>CONTACT</NavLink>
 
-          {/* LOGIN */}
-
-
         </nav>
-
-        {/* Mobile Menu Button */}
-    {/* <button
-  onClick={() => setMobileOpen(!mobileOpen)}
-  className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
->
-  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
-  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}></span>
-  <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
-</button> */}
       </div>
 
-      {/* Mobile Menu */}
-<div className={`md:hidden bg-[#111] flex flex-col items-center gap-6 text-sm tracking-widest transition-all duration-300 overflow-hidden ${
-  mobileOpen ? "max-h-[500px] py-6" : "max-h-0"
-}`}>
-    {/* Login */}
-    <Link
-      href="/login"
-      onClick={() => setMobileOpen(false)}
-      className="flex items-center gap-2 text-[#c74848]"
-    >
-      <Image
-        src="/login.png"
-        alt="Login"
-        width={22}
-        height={22}
-        className="invert"
-      />
-      Log In
-    </Link>
+      {/* MOBILE MENU */}
+      <div className={`md:hidden bg-[#111] flex flex-col items-center gap-6 text-sm tracking-widest transition-all duration-300 overflow-hidden ${mobileOpen ? "max-h-[500px] py-6" : "max-h-0"}`}>
 
-    <MobileLink href="/home" setMobileOpen={setMobileOpen}>HOME</MobileLink>
-    <MobileLink href="/about" setMobileOpen={setMobileOpen}>ABOUT</MobileLink>
-    <MobileLink href="/courses" setMobileOpen={setMobileOpen}>COURSES</MobileLink>
-    <MobileLink href="/admissions" setMobileOpen={setMobileOpen}>ADMISSIONS</MobileLink>
-    <MobileLink href="/gallery" setMobileOpen={setMobileOpen}>GALLERY</MobileLink>
-    <MobileLink href="/exhibitions" setMobileOpen={setMobileOpen}>EXHIBITIONS</MobileLink>
-    <MobileLink href="/community" setMobileOpen={setMobileOpen}>COMMUNITY</MobileLink>
-    <MobileLink href="/contact" setMobileOpen={setMobileOpen}>CONTACT</MobileLink>
+        <Link
+          href="/login"
+          onClick={() => setMobileOpen(false)}
+          className="flex items-center gap-2 text-[#c74848]"
+        >
+          <Image
+            src="/login.png"
+            alt="Login"
+            width={22}
+            height={22}
+            className="invert"
+          />
+          Log In
+        </Link>
 
-  </div>
+        <MobileLink href="/" setMobileOpen={setMobileOpen}>HOME</MobileLink>
+        <MobileLink href="/about" setMobileOpen={setMobileOpen}>ABOUT</MobileLink>
+        <MobileLink href="/courses" setMobileOpen={setMobileOpen}>COURSES</MobileLink>
+        <MobileLink href="/admissions" setMobileOpen={setMobileOpen}>ADMISSIONS</MobileLink>
+        <MobileLink href="/gallery" setMobileOpen={setMobileOpen}>GALLERY</MobileLink>
+        <MobileLink href="/exhibitions" setMobileOpen={setMobileOpen}>EXHIBITIONS</MobileLink>
+        <MobileLink href="/community" setMobileOpen={setMobileOpen}>COMMUNITY</MobileLink>
+        <MobileLink href="/contact" setMobileOpen={setMobileOpen}>CONTACT</MobileLink>
+
+      </div>
 
     </header>
   );
@@ -168,13 +152,12 @@ export default function Header() {
 /* ---------- Components ---------- */
 
 function NavLink({ href, pathname, children }) {
-  const active = pathname === href;
+  const active = pathname === href || (href === "/" && pathname === "/");
 
   return (
     <Link
       href={href}
-      className={`${active ? "text-[#c74848]" : "text-white"
-        } hover:text-[#c74848] transition`}
+      className={`${active ? "text-[#c74848]" : "text-white"} hover:text-[#c74848] transition`}
     >
       {children}
     </Link>
@@ -208,14 +191,13 @@ function Dropdown({ title, active, open, setOpen, children }) {
       onMouseLeave={closeMenu}
     >
       <span
-        className={`cursor-pointer ${active ? "text-[#c74848]" : "text-white"
-          } hover:text-[#c74848]`}
+        className={`cursor-pointer ${active ? "text-[#c74848]" : "text-white"} hover:text-[#c74848]`}
       >
         {title}
       </span>
 
       {open && (
-        <ul className="absolute top-8 left-0 bg-[#111] border border-gray-800 w-52 py-3">
+        <ul className="absolute top-full left-0 bg-[#111] border border-gray-800 w-52 py-3">
           {children}
         </ul>
       )}

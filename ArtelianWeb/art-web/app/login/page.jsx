@@ -1,14 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+    const router = useRouter();
+
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black/40">
+
+        <div className=" pt-45 min-h-screen flex items-center justify-center bg-black/40">
             <div className="relative w-[400px] bg-[#f3ede3] px-10 py-12 shadow-lg">
 
                 {/* Close Button */}
-                <button className="absolute top-4 right-4 text-xl font-bold">
+                <button
+                    onClick={() => router.back()}
+                    className="absolute top-4 right-4 text-2xl"
+                >
                     ✕
                 </button>
 
@@ -73,5 +80,6 @@ export default function Login() {
                 </button>
             </div>
         </div>
+
     );
 }
