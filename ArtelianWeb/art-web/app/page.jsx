@@ -7,12 +7,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function Home() {
   const slides = [
     {
-      image: "/hero1.jpg",
+      image: "/house.jpeg",
       title: "DISCOVER OUR",
       subtitle: "STUDENT WORKS",
     },
     {
-      image: "/hero2.jpg",
+      image: "model.jpeg",
       title: "LEARN",
       subtitle: "CLASSICAL ART",
     },
@@ -37,7 +37,7 @@ export default function Home() {
         {/* Background Image */}
         <Image
           src={slides[current].image}
-          alt="Hero"
+          alt="house"
           fill
           priority
           className="object-cover"
@@ -89,19 +89,18 @@ export default function Home() {
         </div>
 
         {/* Social Icons */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+        <div className="absolute right-6 top-3 -translate-y-3 flex flex-col gap-4">
 
-          <a className="bg-blue-600 p-2 rounded">
-            <img src="/facebook.svg" className="w-5" />
-          </a>
 
-          <a className="bg-red-600 p-2 rounded">
-            <img src="/youtube.svg" className="w-5" />
-          </a>
+          <img src="/facebook.svg" className="w-5" />
 
-          <a className="bg-pink-500 p-2 rounded">
-            <img src="/instagram.svg" className="w-5" />
-          </a>
+
+          <img src="/youtube.svg" className="w-5" />
+
+
+
+          <img src="/instagram.svg" className="w-5" />
+
 
         </div>
 
@@ -147,6 +146,6 @@ export default function Home() {
         </div>
       </section>
 
-    </main>
+    </main >
   );
 }

@@ -151,7 +151,7 @@ export default function Header() {
 
 /* ---------- Components ---------- */
 
-function NavLink({ href, pathname, children }) {
+function NavLink({ href, pathname, children }: { href: string; pathname: string; children: React.ReactNode }) {
   const active = pathname === href || (href === "/" && pathname === "/");
 
   return (
@@ -164,7 +164,7 @@ function NavLink({ href, pathname, children }) {
   );
 }
 
-function MobileLink({ href, setMobileOpen, children }) {
+function MobileLink({ href, setMobileOpen, children }: { href: string; setMobileOpen: (value: boolean) => void; children: React.ReactNode }) {
   return (
     <Link href={href} onClick={() => setMobileOpen(false)}>
       {children}
@@ -172,8 +172,8 @@ function MobileLink({ href, setMobileOpen, children }) {
   );
 }
 
-function Dropdown({ title, active, open, setOpen, children }) {
-  const timeoutRef = useRef(null);
+function Dropdown({ title, active, open, setOpen, children }: { title: string; active: boolean; open: boolean; setOpen: (value: boolean) => void; children: React.ReactNode }) {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const openMenu = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -205,7 +205,7 @@ function Dropdown({ title, active, open, setOpen, children }) {
   );
 }
 
-function DropdownItem({ href, label }) {
+function DropdownItem({ href, label }: { href: string; label: string }) {
   return (
     <li className="px-5 py-2 hover:bg-gray-800">
       <Link href={href}>{label}</Link>
