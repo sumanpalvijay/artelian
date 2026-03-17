@@ -1,123 +1,52 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function ForgotPassword() {
-
+    const [phone, setPhone] = useState<string>("");
     const router = useRouter();
 
-    const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-    const [timer, setTimer] = useState(30);
-    const inputs = useRef<(HTMLInputElement | null)[]>([]);
+    const sendOtp = async () => {
+        if (!phone) return alert("Enter phone number");
 
-    /* Timer countdown */
-    useEffect(() => {
-        if (timer === 0) return;
+        const res = await fetch("/api/send-otp", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ phone }),
+        });
 
-        const interval = setInterval(() => {
-            setTimer((prev) => prev - 1);
-        }, 1000);
+        const data = await res.json();
 
-        return () => clearInterval(interval);
-    }, [timer]);
-
-    /* Handle typing */
-    const handleChange = (value: string, index: number) => {
-
-        if (!/^[0-9]?$/.test(value)) return;
-
-        const newOtp = [...otp];
-        newOtp[index] = value;
-        setOtp(newOtp);
-
-        if (value && index < 5) {
-            inputs.current[index + 1]?.focus();
+        if (data?.success) {
+            router.push(`/verify-otp?phone=${phone}`);
         }
-    };
-
-    /* Handle backspace */
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-
-        if (e.key === "Backspace" && !otp[index] && index > 0) {
-            inputs.current[index - 1]?.focus();
-        }
-    };
-
-    /* Verify OTP */
-    const verifyOtp = () => {
-
-        const enteredOtp = otp.join("");
-
-        if (enteredOtp.length === 6) {
-            router.push("/change-password");
-        } else {
-            alert("Enter valid OTP");
-        }
-    };
-
-    /* Resend OTP */
-    const resendOtp = () => {
-        setTimer(30);
-        alert("OTP Resent");
     };
 
     return (
-        <main className="pt-32 flex justify-center items-center min-h-screen bg-gray-200">
-
-            <div className="bg-[#e8e0d6] p-10 w-[420px] shadow-lg">
-
-                <h2 className="text-3xl text-center mb-6">
-                    OTP Verification
+        <div className="flex items-center justify-center h-screen bg-gray-100">
+            <div className="bg-white p-8 rounded-2xl shadow-lg w-80">
+                <h2 className="text-xl font-bold text-center mb-4">
+                    Forgot Password
                 </h2>
 
-                <p className="text-center mb-6">
-                    Enter the 6 digit OTP sent to your phone
-                </p>
+                <input
+                    type="text"
+                    placeholder="Enter phone number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full p-2 border rounded-lg mb-4"
+                />
 
-                {/* OTP BOXES */}
-                <div className="flex justify-between mb-6">
-
-                    {otp.map((digit, index) => (
-                        <input
-                            key={index}
-                            ref={(el) => { inputs.current[index] = el; }}
-                            value={digit}
-                            onChange={(e) => handleChange(e.target.value, index)}
-                            onKeyDown={(e) => handleKeyDown(e, index)}
-                            maxLength={1}
-                            className="w-12 h-12 text-center text-xl border"
-                        />
-                    ))}
-
-                </div>
-
-                {/* VERIFY BUTTON */}
                 <button
-                    onClick={verifyOtp}
-                    className="w-full bg-[#8b3a32] text-white py-3"
+                    onClick={sendOtp}
+                    className="w-full bg-blue-600 text-white py-2 rounded-lg"
                 >
-                    Verify OTP
+                    Send OTP
                 </button>
-
-                {/* TIMER */}
-                <div className="text-center mt-4">
-
-                    {timer > 0 ? (
-                        <p>Resend OTP in {timer}s</p>
-                    ) : (
-                        <button
-                            onClick={resendOtp}
-                            className="text-red-500"
-                        >
-                            Resend OTP
-                        </button>
-                    )}
-
-                </div>
-
             </div>
-
-        </main>
+        </div>
     );
 }

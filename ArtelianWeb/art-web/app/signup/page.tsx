@@ -13,7 +13,7 @@ export default function SignUp() {
 
                 {/* Close Button */}
                 <button
-                    onClick={() => router.back()}
+                    onClick={() => router.push("/?signup=true")}
                     className="absolute top-4 right-4 text-2xl"
                 >
                     ✕
@@ -49,6 +49,16 @@ export default function SignUp() {
                         placeholder="Password"
                         className="w-full border border-gray-700 px-4 py-2 bg-transparent outline-none"
                     />
+
+                    <div className="flex items-center border border-gray-700">
+
+                        <span className="px-3 bg-gray-100">+91</span>
+                        <input
+                            type="text"
+                            placeholder="Phone number"
+                            className="px-3 py-2 outline-none"
+                        />
+                    </div>
 
                     <button
                         type="submit"

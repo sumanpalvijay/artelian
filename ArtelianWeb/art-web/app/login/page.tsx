@@ -13,7 +13,7 @@ export default function Login() {
 
                 {/* Close Button */}
                 <button
-                    onClick={() => router.back()}
+                    onClick={() => router.push("/?login=true")}
                     className="absolute top-4 right-4 text-2xl"
                 >
                     ✕

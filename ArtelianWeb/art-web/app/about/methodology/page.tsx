@@ -12,7 +12,7 @@ export default function MethodologyPage() {
 
                 {/* Background Image */}
                 <Image
-                    src="/methodology-hero.jpg"
+                    src="/gallery/color.jpeg"
                     alt="Methodology"
                     fill
                     priority
@@ -83,7 +83,7 @@ export default function MethodologyPage() {
                     {/* RIGHT VIDEO BOX */}
                     <div className="bg-black h-[320px] relative shadow-2xl">
                         <Image
-                            src="/methodology-video-thumbnail.jpg"
+                            src="/gallery/sitting.jpeg"
                             alt="Methodology Video"
                             fill
                             className="object-cover opacity-90"
@@ -139,7 +139,7 @@ export default function MethodologyPage() {
                     {/* RIGHT VIDEO BOX */}
                     <div className="bg-black h-[320px] relative shadow-2xl">
                         <Image
-                            src="/academy-image-thumbnail.jpg"
+                            src="/gallery/sideface.jpeg"
                             alt="Academy Image"
                             fill
                             className="object-cover opacity-90"

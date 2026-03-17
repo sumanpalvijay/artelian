@@ -12,7 +12,7 @@ export default function AboutPage() {
 
                 {/* Background Image */}
                 <Image
-                    src="/about-hero.jpg"
+                    src="/gallery/nature.jpeg"
                     alt="About Us"
                     fill
                     priority
@@ -81,7 +81,7 @@ export default function AboutPage() {
                     {/* RIGHT VIDEO BOX */}
                     <div className="bg-black h-[320px] relative shadow-2xl">
                         <Image
-                            src="/academy-video-thumbnail.jpg"
+                            src="/gallery/flower.jpeg"
                             alt="Academy Video"
                             fill
                             className="object-cover opacity-90"
@@ -137,7 +137,7 @@ export default function AboutPage() {
                     {/* RIGHT VIDEO BOX */}
                     <div className="bg-black h-[320px] relative shadow-2xl">
                         <Image
-                            src="/academy-image-thumbnail.jpg"
+                            src="/gallery/house.jpeg"
                             alt="Academy Image"
                             fill
                             className="object-cover opacity-90"
